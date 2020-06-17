@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/js/vuejs-2.5.16.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+        <div id="app">
+            <button v-on:click="find()">查询</button>
+            <table border="1">
+                <tr>
+                    <td>序号</td>
+                    <td>姓名</td>
+                    <td>年龄</td>
+                    <td>地址</td>
+                </tr>
+                <tr v-for="(user,index) in users">
+                   <td>{{index+1}}</td>
+                   <td>{{user.username}}</td>
+                   <td>{{user.age}}</td>
+                   <td>{{user.address}}</td>
+                </tr>
+            </table>
+
+        </div>
+</body>
+    <script>
+        new Vue({
+            el: '#app',
+            data:{
+                users:[]
+            },
+            methods:{
+                find:function(){
+                    //this.users=[{"id":16,"username":"才徐坤","age":1213,"address":"河南郑州111"},{"id":25,"username":"陈小明","age":12,"address":"河南郑州"},{"id":30,"username":"wangwu","age":null,"address":"中国 北京"},{"id":31,"username":"zhangsan1","age":null,"address":"北京中国"},{"id":32,"username":"wangwu","age":null,"address":"上海"},{"id":33,"username":"zhaoliu","age":null,"address":"天津"},{"id":34,"username":"zhaosi","age":null,"address":"天津"},{"id":35,"username":"songqi","age":null,"address":"上海"},{"id":38,"username":"张三","age":null,"address":"山东"},{"id":40,"username":"王五","age":null,"address":"郑州"},{"id":42,"username":"赵四","age":null,"address":"南京"},{"id":44,"username":"1902","age":null,"address":"123"},{"id":47,"username":"马云","age":null,"address":"杭州阿里巴巴"},{"id":48,"username":"aaaaa","age":null,"address":"河北"},{"id":49,"username":"guest","age":null,"address":"打发打发"},{"id":50,"username":"你好","age":null,"address":"123"},{"id":51,"username":"你好","age":null,"address":"你好么"},{"id":52,"username":"admin","age":null,"address":null},{"id":53,"username":"adfdfdsadsf","age":null,"address":null},{"id":54,"username":"随便吧","age":null,"address":"河南"},{"id":55,"username":"牛逼","age":null,"address":"东北"},{"id":57,"username":"安子豪","age":null,"address":"西安南窑头国际城"},{"id":58,"username":"541109497@qq.com","age":null,"address":"陕西"},{"id":59,"username":"13201657507@163.com","age":null,"address":"陕西"},{"id":60,"username":"541109497@qq.com","age":null,"address":"陕西"}]
+                //axios
+                    //定义vue对象
+                  _this=  this;
+                  axios.get("/user/findAll").then(function (res) {
+                      console.log(res);
+                      if (res.status==200){
+                          _this.users= res.data;
+                      }
+
+                  })
+
+                }
+            },
+            mounted:function(){
+               this.find();
+            },
+            /*created:function(){
+                this.find();
+            }*/
+
+        })
+
+    </script>
+</html>
