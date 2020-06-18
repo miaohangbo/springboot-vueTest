@@ -1,7 +1,9 @@
 version: "3.1"
 services:
   testcd:
-    build: docker
+    build:
+      context: /target
+      dockerfile:  Dockerfile
     restart: always
     container_name: testcd
     ports:
