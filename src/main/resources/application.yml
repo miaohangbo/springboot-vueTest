@@ -3,14 +3,15 @@ server:
 spring:
   datasource:
     driverClassName:  com.mysql.jdbc.Driver
-    url: jdbc:mysql://122.51.170.190/test?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://127.0.0.1/test?useUnicode=true&characterEncoding=utf8
     username: root
-    password: root
+    password: 59852369
   jpa:
     database: Mysql
     generate-ddl: true
     show-sql: true
   redis:
     database: 0
-    host: 121.36.161.39
-    port: 6379111
+    host: 127.0.0.1
+    port: 6379
+    password:
